@@ -1,20 +1,9 @@
-// const heading = React.createElement(
-//   "h1",
-//   { id: "heading" },
-//   "Hello World Using React!"
-// );
-
-const parent = React.createElement("div", { id: "parent" }, [
-  React.createElement("div", { id: "child1" }, [
-    React.createElement("h1", {}, "I'm H1 tag"),
-    React.createElement("h2", {}, "I'm H2 tag"),
-  ]),
-  React.createElement("div", { id: "child2" }, [
-    React.createElement("h1", {}, "I'm H1 tag"),
-    React.createElement("h2", {}, "I'm H2 tag"),
-  ]),
-]);
-console.log(parent);
-
-const rootChild = ReactDOM.createRoot(document.getElementById("root-child"));
-rootChild.render(parent);
+//step 0: Import whatever u will going to use
+import React from "react";
+import ReactDOM from "react-dom/client";
+//step 1: what you whant to render
+const heading = React.createElement("h1", { id: "heading" }, "Namaste React");
+//step 2: where you whant to render
+const root = ReactDOM.createRoot(document.getElementById("root"));
+//step 3: render
+root.render(heading);

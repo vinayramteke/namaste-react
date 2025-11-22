@@ -1,0 +1,30 @@
+{
+  "name": "namaste-react",
+  "version": "1.0.0",
+  "description": "This is my react learning record",
+  "keywords": [
+    "react"
+  ],
+  "homepage": "https://github.com/vinayramteke/namaste-react#readme",
+  "bugs": {
+    "url": "https://github.com/vinayramteke/namaste-react/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vinayramteke/namaste-react.git"
+  },
+  "license": "ISC",
+  "author": "Vinay Ramteke",
+  "type": "commonjs",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },  "devDependencies": {
+    "parcel": "^2.16.1"
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  }
+}

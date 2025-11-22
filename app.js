@@ -11,10 +11,13 @@ const jsxHeading = <h1 id="heading">Namaste React By JSX</h1>;
 //compenent composition: importing one react component into other react component
 const Title = () => <h1 className="title">This is my title compenent</h1>;
 
-//React Component : functional Component => A js arrow function which return JSX
+//React Component : functional Component => A normal js function which return JSX
 const HeadingComponent = () => (
   <div id="container">
+    {/* using react compenent */}
     <Title />
+    {/* using {} */}
+    {jsxHeading}
     <h1 id="heading" className="heading">
       Namaste React using FN Component
     </h1>

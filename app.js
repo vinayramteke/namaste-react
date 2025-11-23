@@ -26,14 +26,21 @@ const Header = () => {
 const RestroCard = () => {
   return (
     <div className="restro-card">
-      <img
-        className="restro-img"
-        src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/04fb67f176cf4ff4614a3319c2a00bec"
-      ></img>
-      <h3>Meghna Food</h3>
-      <h4>Rolls, Chinese, Snacks, Burgers</h4>
-      <h4>4.3star</h4>
-      <h4>24mins</h4>
+      <div className="restro-img-container">
+        <img
+          className="restro-img"
+          src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/04fb67f176cf4ff4614a3319c2a00bec"
+        ></img>
+      </div>
+      <div className="restro-info">
+        <h3>Meghna Foods</h3>
+        <h4 className="cuisines">Rolls, Chinese, Snacks, Burgers</h4>
+        <div className="restro-meta">
+          <span className="rating">★ 4.3</span>
+          <span className="delivery-time">24 mins</span>
+        </div>
+        <h4 className="cost">₹400 FOR TWO</h4>
+      </div>
     </div>
   );
 };
@@ -51,6 +58,7 @@ const Body = () => {
         <button className="search-btn">Search</button>
       </div>
       <div className="restro-container">
+        <RestroCard />
         <RestroCard />
         <RestroCard />
         <RestroCard />

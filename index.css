@@ -113,3 +113,80 @@ body {
 .search-btn:hover {
   background-color: #ea580c;
 }
+
+/* Restaurant Container (Grid Layout) */
+.restro-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
+}
+
+/* Restaurant Card CSS */
+.restro-card {
+  width: 250px;
+  background-color: white;
+  border-radius: 12px;
+  padding: 12px; /* Inner spacing */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+.restro-card:hover {
+  transform: translateY(-5px); /* Lift up effect */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.restro-img-container {
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+.restro-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures image fills the box without stretching */
+}
+.restro-info h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  color: #1f2937;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Handles long names */
+}
+.cuisines {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin: 0 0 12px 0;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /*manage long names*/
+}
+.restro-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.rating {
+  background-color: #22c55e; /* Green star box */
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.delivery-time {
+  color: #374151;
+}
+.cost {
+  font-size: 0.8rem;
+  color: #374151;
+  margin: 0;
+}

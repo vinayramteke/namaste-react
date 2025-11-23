@@ -1,7 +1,7 @@
 //step 0: Import whatever u will going to use
 import React from "react";
 import ReactDOM from "react-dom/client";
-
+///step 1: Build Header of my Food App
 const Header = () => {
   return (
     <div className="header">
@@ -23,16 +23,58 @@ const Header = () => {
   );
 };
 
-const AppBody = () => {
+const RestroCard = () => {
   return (
-    <div className="app">
-      <Header />
+    <div className="restro-card">
+      <img
+        className="restro-img"
+        src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/04fb67f176cf4ff4614a3319c2a00bec"
+      ></img>
+      <h3>Meghna Food</h3>
+      <h4>Rolls, Chinese, Snacks, Burgers</h4>
+      <h4>4.3star</h4>
+      <h4>24mins</h4>
     </div>
   );
 };
 
-//step 2: where you whant to render
+//step 2:building Body for my food app
+const Body = () => {
+  return (
+    <div className="app-body">
+      <div className="search-container">
+        <input
+          type="text"
+          className="search-input"
+          placeholder="Search for restaurants..."
+        />
+        <button className="search-btn">Search</button>
+      </div>
+      <div className="restro-container">
+        <RestroCard />
+        <RestroCard />
+        <RestroCard />
+        <RestroCard />
+        <RestroCard />
+        <RestroCard />
+        <RestroCard />
+      </div>
+    </div>
+  );
+};
+
+//step 0: Build Body of my Food App
+const AppLayout = () => {
+  return (
+    <div className="app">
+      <Header />
+      <Body />
+    </div>
+  );
+};
+
+//step 0: where you whant to render
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-//step 3: render
-root.render(<AppBody />);
+//step 0: render
+root.render(<AppLayout />);

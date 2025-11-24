@@ -78,13 +78,14 @@ body {
   padding: 2rem 1rem;
 }
 
-/* Search Bar CSS */
+/* Search Bar and Filter */
 .search-container {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 2.5rem;
-  gap: 10px;
+  gap: 16px; /* Increased gap for better separation */
+  flex-wrap: wrap; /* Allow wrapping on small mobile screens */
 }
 .search-input {
   padding: 12px 20px;
@@ -112,6 +113,35 @@ body {
 }
 .search-btn:hover {
   background-color: #ea580c;
+}
+
+/* Filter Button CSS */
+.filter-button {
+  padding: 12px 24px; /* Matched padding with search button */
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 25px; /* Matched radius with search button */
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #4b5563;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.filter-button:hover {
+  background-color: #f9fafb;
+  border-color: #d1d5db;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: #1f2937;
+}
+
+.filter-button:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  background-color: #f3f4f6;
 }
 
 /* Restaurant Container (Grid Layout) */

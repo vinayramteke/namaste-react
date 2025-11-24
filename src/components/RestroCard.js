@@ -4,8 +4,14 @@ import { CDN_URL } from "../utils/constants";
 const RestroCard = (props) => {
   //restructure of props so that props.restroName not need to be used and this only javascript not react
   const { restroInfo } = props;
-  const { cloudinaryImageId, name, cuisines, avgRating, sla, costForTwo } =
-    restroInfo?.info;
+  const {
+    cloudinaryImageId,
+    name,
+    cuisines,
+    avgRating,
+    deliveryTime,
+    costForTwo,
+  } = restroInfo;
   return (
     <div className="restro-card">
       <div className="restro-img-container">
@@ -16,7 +22,7 @@ const RestroCard = (props) => {
         <h4 className="cuisines">{cuisines.join(",")}</h4>
         <div className="restro-meta">
           <span className="rating">★ {avgRating}</span>
-          <span className="delivery-time">{sla.deliveryTime} mins</span>
+          <span className="delivery-time">{deliveryTime} mins</span>
         </div>
         <h4 className="cost">{costForTwo}</h4>
       </div>

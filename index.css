@@ -71,6 +71,20 @@ body {
   background-color: #ea580c; /* Darker orange */
 }
 
+/* Login/LogOut Button Styles */
+.login-btn {
+  padding: 0.5rem 1.5rem;
+  background-color: #16f984;
+  color: white;
+  border-radius: 9999px; /* Full rounded */
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+.login-btn:hover {
+  background-color: #0cea9c; /* Darker orange */
+}
+
 /* --- Body CSS --- */
 .app-body {
   max-width: 1200px;

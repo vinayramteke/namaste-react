@@ -19,7 +19,7 @@ const Body = () => {
     setlistOfRestro(json.restaurants);
   };
 
-  //Using Shimmer to load fake card for better UX
+  //Using Shimmer to load fake card for better UX also called Conditional Rendring.
   if (listOfRestro.length === 0) {
     return <Shimmer />;
   }

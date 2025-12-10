@@ -1,10 +1,24 @@
 import RestroCard from "./RestroCard";
-import restroList from "../utils/restroData";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Shimmer from "./Shimmer";
 
 //step 2:building Body for my food app
 const Body = () => {
-  const [listOfRestro, setlistOfRestro] = useState(restroList);
+  //creating react state varible using react hook useState=>maintain state of varible and sink UI
+  const [listOfRestro, setlistOfRestro] = useState([]);
+
+  // creating api call using react hook useEffect
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  // api call to fetch real data
+  const fetchData = async () => {
+    const data = await fetch("https://api.npoint.io/eaa947b5059e46c7d650");
+    const json = await data.json();
+    setlistOfRestro(json.restaurants);
+  };
+
   return (
     <div className="app-body">
       <div className="search-container">
@@ -17,9 +31,7 @@ const Body = () => {
         <button
           className="filter-button"
           onClick={() => {
-            const filteredList = listOfRestro.filter(
-              (restaurantes) => restaurantes.avgRating > 4
-            );
+            const filteredList = listOfRestro.filter((res) => res.rating > 4);
             setlistOfRestro(filteredList);
           }}
         >

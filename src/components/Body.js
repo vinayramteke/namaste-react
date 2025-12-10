@@ -19,6 +19,10 @@ const Body = () => {
     setlistOfRestro(json.restaurants);
   };
 
+  //Using Shimmer to load fake card for better UX
+  if (listOfRestro.length === 0) {
+    return <Shimmer />;
+  }
   return (
     <div className="app-body">
       <div className="search-container">

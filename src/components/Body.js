@@ -6,6 +6,7 @@ import Shimmer from "./Shimmer";
 const Body = () => {
   //creating react state varible using react hook useState=>maintain state of varible and sink UI
   const [listOfRestro, setListOfRestro] = useState([]);
+  const [filteredRestro, setFilteredRestro] = useState([]);
   const [searchText, setSearchText] = useState("");
 
   console.log("Body Comp");
@@ -20,6 +21,7 @@ const Body = () => {
     const data = await fetch("https://api.npoint.io/eaa947b5059e46c7d650");
     const json = await data.json();
     setListOfRestro(json.restaurants);
+    setFilteredRestro(json.restaurants);
   };
 
   //Using Shimmer to load fake card for better UX also called Conditional Rendring.
@@ -46,8 +48,12 @@ const Body = () => {
             const searchedResto = listOfRestro.filter((res) =>
               res.name.toLowerCase().includes(searchText.toLowerCase())
             );
+            if (searchedResto.length === 0) {
+              alert("No restaurants found");
+              return;
+            }
             console.log(searchedResto);
-            setListOfRestro(searchedResto);
+            setFilteredRestro(searchedResto);
           }}
         >
           Search
@@ -56,7 +62,7 @@ const Body = () => {
           className="filter-button"
           onClick={() => {
             const filteredList = listOfRestro.filter((res) => res.rating > 4);
-            setListOfRestro(filteredList);
+            setFilteredRestro(filteredList);
           }}
         >
           Most Rated Restaurant
@@ -65,7 +71,7 @@ const Body = () => {
       <div className="filter-container"></div>
       {/*To run a loop */}
       <div className="restro-container">
-        {listOfRestro.map((restaurant) => (
+        {filteredRestro.map((restaurant) => (
           <RestroCard key={restaurant.id} restroInfo={restaurant} />
         ))}
       </div>

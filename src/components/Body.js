@@ -5,7 +5,10 @@ import Shimmer from "./Shimmer";
 //step 2:building Body for my food app
 const Body = () => {
   //creating react state varible using react hook useState=>maintain state of varible and sink UI
-  const [listOfRestro, setlistOfRestro] = useState([]);
+  const [listOfRestro, setListOfRestro] = useState([]);
+  const [searchText, setSearchText] = useState("");
+
+  console.log("Body Comp");
 
   // creating api call using react hook useEffect
   useEffect(() => {
@@ -16,7 +19,7 @@ const Body = () => {
   const fetchData = async () => {
     const data = await fetch("https://api.npoint.io/eaa947b5059e46c7d650");
     const json = await data.json();
-    setlistOfRestro(json.restaurants);
+    setListOfRestro(json.restaurants);
   };
 
   //Using Shimmer to load fake card for better UX also called Conditional Rendring.
@@ -30,19 +33,37 @@ const Body = () => {
           type="text"
           className="search-input"
           placeholder="Search for restaurants..."
+          value={searchText}
+          onChange={(e) => {
+            setSearchText(e.target.value);
+          }}
         />
-        <button className="search-btn">Search</button>
+        <button
+          className="search-btn"
+          onClick={() => {
+            console.log("bC");
+
+            const searchedResto = listOfRestro.filter((res) =>
+              res.name.toLowerCase().includes(searchText.toLowerCase())
+            );
+            console.log(searchedResto);
+            setListOfRestro(searchedResto);
+          }}
+        >
+          Search
+        </button>
         <button
           className="filter-button"
           onClick={() => {
             const filteredList = listOfRestro.filter((res) => res.rating > 4);
-            setlistOfRestro(filteredList);
+            setListOfRestro(filteredList);
           }}
         >
           Most Rated Restaurant
         </button>
       </div>
       <div className="filter-container"></div>
+      {/*To run a loop */}
       <div className="restro-container">
         {listOfRestro.map((restaurant) => (
           <RestroCard key={restaurant.id} restroInfo={restaurant} />

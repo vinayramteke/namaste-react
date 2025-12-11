@@ -18,10 +18,28 @@ const Body = () => {
 
   // api call to fetch real data
   const fetchData = async () => {
-    const data = await fetch("https://api.npoint.io/eaa947b5059e46c7d650");
+    //for api call of api created by me
+
+    // const data = await fetch("https://api.npoint.io/eaa947b5059e46c7d650");
+    // const json = await data.json();
+    // setListOfRestro(json.restaurants);
+    // setFilteredRestro(json.restaurants);
+
+    //swigy api path
+    //data.cards[2].card.card.gridElements.infoWithStyle.restaurants
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=31.68660&lng=76.52180&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
     const json = await data.json();
-    setListOfRestro(json.restaurants);
-    setFilteredRestro(json.restaurants);
+    setListOfRestro(
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    setFilteredRestro(
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    console.log(
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
   };
 
   //Using Shimmer to load fake card for better UX also called Conditional Rendring.
@@ -44,7 +62,7 @@ const Body = () => {
           className="search-btn"
           onClick={() => {
             console.log("bC");
-
+            //Search funcationality Code
             const searchedResto = listOfRestro.filter((res) =>
               res.name.toLowerCase().includes(searchText.toLowerCase())
             );
@@ -61,7 +79,9 @@ const Body = () => {
         <button
           className="filter-button"
           onClick={() => {
-            const filteredList = listOfRestro.filter((res) => res.rating > 4);
+            const filteredList = listOfRestro.filter(
+              (res) => res?.info?.avgRating > 4
+            );
             setFilteredRestro(filteredList);
           }}
         >
@@ -72,7 +92,7 @@ const Body = () => {
       {/*To run a loop */}
       <div className="restro-container">
         {filteredRestro.map((restaurant) => (
-          <RestroCard key={restaurant.id} restroInfo={restaurant} />
+          <RestroCard key={restaurant?.info?.id} restroInfo={restaurant} />
         ))}
       </div>
     </div>

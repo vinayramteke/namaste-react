@@ -3,6 +3,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
+import { createBrowserRouter, RouterProvider } from "react-router";
+import About from "./components/About";
 
 //step 0: Build Body of my Food App
 const AppLayout = () => {
@@ -13,9 +15,18 @@ const AppLayout = () => {
     </div>
   );
 };
-
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppLayout />,
+  },
+  {
+    path: "/About",
+    element: <About />,
+  },
+]);
 //step 0: where you whant to render
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 //step 0: render
-root.render(<AppLayout />);
+root.render(<RouterProvider router={appRouter} />);

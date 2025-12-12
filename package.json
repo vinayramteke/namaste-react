@@ -20,11 +20,13 @@
     "start": "parcel index.html",
     "build": "parcel build index.html",
     "test": "jest"
-  },  "devDependencies": {
+  },
+  "devDependencies": {
     "parcel": "^2.16.1"
   },
   "dependencies": {
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "react-router-dom": "^7.10.1"
   }
 }

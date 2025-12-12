@@ -64,7 +64,7 @@ const Body = () => {
             console.log("bC");
             //Search funcationality Code
             const searchedResto = listOfRestro.filter((res) =>
-              res.name.toLowerCase().includes(searchText.toLowerCase())
+              res.info.name.toLowerCase().includes(searchText.toLowerCase())
             );
             if (searchedResto.length === 0) {
               alert("No restaurants found");

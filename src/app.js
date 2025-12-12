@@ -3,7 +3,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
-import { createBrowserRouter, RouterProvider } from "react-router"; //for rounting
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router"; //for rounting
 //pages Import
 import About from "./components/About";
 import Contact from "./components/Contact";
@@ -14,7 +14,7 @@ const AppLayout = () => {
   return (
     <div className="app">
       <Header />
-      <Body />
+      <Outlet />
     </div>
   );
 };
@@ -22,15 +22,17 @@ const appRouter = createBrowserRouter([
   {
     path: "/",
     element: <AppLayout />,
+    children: [
+      {
+        path: "/About",
+        element: <About />,
+      },
+      {
+        path: "/Contact",
+        element: <Contact />,
+      },
+    ],
     errorElement: <Error />,
-  },
-  {
-    path: "/About",
-    element: <About />,
-  },
-  {
-    path: "/Contact",
-    element: <Contact />,
   },
 ]);
 //step 0: where you whant to render

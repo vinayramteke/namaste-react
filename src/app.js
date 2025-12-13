@@ -8,6 +8,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router"; //fo
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
+import RestroMenu from "./components/RestroMenu";
 
 //step 0: Build Body of my Food App
 const AppLayout = () => {
@@ -28,12 +29,16 @@ const appRouter = createBrowserRouter([
         element: <Body />,
       },
       {
-        path: "/About",
+        path: "/about",
         element: <About />,
       },
       {
-        path: "/Contact",
+        path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/restaurant/:restroId",
+        element: <RestroMenu />,
       },
     ],
     errorElement: <Error />,

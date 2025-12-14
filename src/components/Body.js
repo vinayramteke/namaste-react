@@ -1,6 +1,7 @@
 import RestroCard from "./RestroCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router";
 
 //step 2:building Body for my food app
 const Body = () => {
@@ -92,7 +93,12 @@ const Body = () => {
       {/*To run a loop */}
       <div className="restro-container">
         {filteredRestro.map((restaurant) => (
-          <RestroCard key={restaurant?.info?.id} restroInfo={restaurant} />
+          <Link
+            key={restaurant?.info?.id}
+            to={"/restaurant/" + restaurant?.info?.id}
+          >
+            <RestroCard restroInfo={restaurant} />
+          </Link>
         ))}
       </div>
     </div>

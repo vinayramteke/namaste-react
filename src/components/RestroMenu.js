@@ -1,27 +1,14 @@
-  import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router";
-import { MENU_URL } from "../utils/constants";
+import { MENU_API } from "../utils/constants";
 import { MENUIMG_URL } from "../utils/constants";
+import useRestroMenu from "../utils/useRestroMenu";
 
 const RestroMenu = () => {
-  const [restroInfo, setRestroInfo] = useState(null);
-  //for toggle button
-  // const [showMenu, setShowMenu] = useState(false);
+  const restroInfo = useRestroMenu(restroId); //customised hook to fetch menu data
   const [openIndex, setOpenIndex] = useState(null);
   const { restroId } = useParams();
-  console.log(restroId);
-
-  useEffect(() => {
-    fetchMenu();
-  }, []);
-
-  const fetchMenu = async () => {
-    // const data = await fetch("https://api.npoint.io/54a1d363bc20cf0156f9");
-    const data = await fetch(MENU_URL + restroId);
-    const json = await data.json();
-    setRestroInfo(json?.data);
-  };
 
   if (restroInfo === null) {
     return <Shimmer />;
@@ -75,6 +62,7 @@ const RestroMenu = () => {
           return (
             <div key={index} className="r-menu">
               <h2>{title}</h2>
+              {/* toggle button to hide and unhide menuItems */}
               <button onClick={() => setOpenIndex(isOpen ? null : index)}>
                 {isOpen ? "<" : ">"}
               </button>

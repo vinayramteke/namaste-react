@@ -477,3 +477,9 @@ body {
   border-radius: 12px;
   border: 1px solid #e9e9eb;
 }
+
+/*user */
+.user-container {
+  border-radius: 12px;
+  border: #0cea9c;
+}

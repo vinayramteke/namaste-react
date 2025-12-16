@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+  import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router";
 import { MENU_URL } from "../utils/constants";
@@ -6,6 +6,9 @@ import { MENUIMG_URL } from "../utils/constants";
 
 const RestroMenu = () => {
   const [restroInfo, setRestroInfo] = useState(null);
+  //for toggle button
+  // const [showMenu, setShowMenu] = useState(false);
+  const [openIndex, setOpenIndex] = useState(null);
   const { restroId } = useParams();
   console.log(restroId);
 
@@ -67,30 +70,38 @@ const RestroMenu = () => {
 
         {categories.map((category, index) => {
           const { title, itemCards } = category.card.card;
+          const isOpen = openIndex === index;
 
           return (
             <div key={index} className="r-menu">
               <h2>{title}</h2>
+              <button onClick={() => setOpenIndex(isOpen ? null : index)}>
+                {isOpen ? "<" : ">"}
+              </button>
 
-              {itemCards.map((item) => {
-                const info = item.card.info;
-                return (
-                  <div key={info.id} className="menu-item">
-                    <h3>{info.name}</h3>
+              {isOpen && (
+                <div>
+                  {itemCards.map((item) => {
+                    const info = item.card.info;
+                    return (
+                      <div key={info.id} className="menu-item">
+                        <h3>{info.name}</h3>
 
-                    <p>₹{(info.price || info.defaultPrice) / 100}</p>
+                        <p>₹{(info.price || info.defaultPrice) / 100}</p>
 
-                    <p>{info.description}</p>
-                    <div className="menu-img-container">
-                      <img
-                        className="menu-img"
-                        src={MENUIMG_URL + info.imageId}
-                        alt={info.name}
-                      ></img>
-                    </div>
-                  </div>
-                );
-              })}
+                        <p>{info.description}</p>
+                        <div className="menu-img-container">
+                          <img
+                            className="menu-img"
+                            src={MENUIMG_URL + info.imageId}
+                            alt={info.name}
+                          ></img>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           );
         })}

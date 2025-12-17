@@ -2,6 +2,7 @@ import RestroCard from "./RestroCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
+import useRestroCard from "../utils/useRestroCard";
 
 //step 2:building Body for my food app
 const Body = () => {
@@ -19,15 +20,6 @@ const Body = () => {
 
   // api call to fetch real data
   const fetchData = async () => {
-    //for api call of api created by me
-
-    // const data = await fetch("https://api.npoint.io/eaa947b5059e46c7d650");
-    // const json = await data.json();
-    // setListOfRestro(json.restaurants);
-    // setFilteredRestro(json.restaurants);
-
-    //swigy api path
-    //data.cards[2].card.card.gridElements.infoWithStyle.restaurants
     const data = await fetch(
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=31.68660&lng=76.52180&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );

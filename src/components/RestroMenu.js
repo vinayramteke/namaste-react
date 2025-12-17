@@ -1,14 +1,15 @@
-import { useEffect, useState } from "react";
-import Shimmer from "./Shimmer";
+import { useState } from "react";
 import { useParams } from "react-router";
-import { MENU_API } from "../utils/constants";
 import { MENUIMG_URL } from "../utils/constants";
+import Shimmer from "./Shimmer";
 import useRestroMenu from "../utils/useRestroMenu";
 
 const RestroMenu = () => {
-  const restroInfo = useRestroMenu(restroId); //customised hook to fetch menu data
-  const [openIndex, setOpenIndex] = useState(null);
   const { restroId } = useParams();
+
+  const restroInfo = useRestroMenu(restroId); //customised hook to fetch menu data
+
+  const [openIndex, setOpenIndex] = useState(null); //toggle state
 
   if (restroInfo === null) {
     return <Shimmer />;

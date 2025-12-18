@@ -13,7 +13,7 @@ import RestroMenu from "./components/RestroMenu";
 //step 0: Build Body of my Food App
 const AppLayout = () => {
   return (
-    <div className="app">
+    <div className="app-layout font-sans text-gray-950 m-0 bg-[#f9fafb] ">
       <Header />
       <Outlet />
     </div>

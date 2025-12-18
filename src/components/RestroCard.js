@@ -12,18 +12,29 @@ const RestroCard = (props) => {
   const { cloudinaryImageId, name, cuisines, avgRating, sla, costForTwo } =
     restroInfo?.info || {};
   return (
-    <div className="restro-card">
-      <div className="restro-img-container">
-        <img className="restro-img" src={CDN_URL + cloudinaryImageId}></img>
+    <div className="restro-card w-[250px] bg-white  rounded-xl p-3 shadow-md cursor-pointer">
+      <div className="restro-img-container w-full h-40 overflow-hidden rounded-lg mb-3">
+        <img
+          className="restro-img w-full h-full object-cover"
+          src={CDN_URL + cloudinaryImageId}
+        ></img>
       </div>
-      <div className="restro-info">
-        <h3>{name}</h3>
-        <h4 className="cuisines">{cuisines.join(",")}</h4>
-        <div className="restro-meta">
-          <span className="rating">★ {avgRating}</span>
-          <span className="delivery-time">{sla.deliveryTime} mins</span>
+      <div className="restro-info ">
+        <h3 className="text-1.1 font-bold mt-0 mr-0 mb-2 ml-0 text-[#1f2937] whitespace-nowrap overflow-hidden text-ellipsis">
+          {name}
+        </h3>
+        <h4 className="cuisines text-0.85 mt-0 mr-0 mb-3 ml-0 font-normal whitespace-nowrap overflow-hidden text-ellipsis">
+          {cuisines.join(",")}
+        </h4>
+        <div className="restro-meta flex justify-between items-center text-0.8 font-semibold mb-2">
+          <span className="rating bg-[#22c55e] text-white py-[2px] px-[6px] rounded-sm">
+            ★ {avgRating}
+          </span>
+          <span className="delivery-time text-[#374151]">
+            {sla.deliveryTime} mins
+          </span>
         </div>
-        <h4 className="cost">{costForTwo}</h4>
+        <h4 className="cost m-0 text-0.8 text-[#374151]">{costForTwo}</h4>
       </div>
     </div>
   );

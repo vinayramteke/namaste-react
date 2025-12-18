@@ -40,19 +40,23 @@ const Body = () => {
     return <Shimmer />;
   }
   return (
-    <div className="app-body">
-      <div className="search-container">
+    <div className="page-container my-0 mx-auto p-8-4 max-w-300">
+      {/* search and filter box */}
+      <div className="search-filter-container flex flex-wrap gap-4 justify-center items-center mb-10 mt-10 ">
+        {/* search input box */}
         <input
           type="text"
-          className="search-input"
+          className="search-input rounded-full py-3 px-4 w-full max-w-100 border border-solid outline-none border-[#e5e7eb] focus:shadow-[0_0_3px_rgba(249,115,22,0.2)] focus:border-[#f97313] transition-shadow-12"
           placeholder="Search for restaurants..."
           value={searchText}
           onChange={(e) => {
             setSearchText(e.target.value);
           }}
         />
+
+        {/* search button */}
         <button
-          className="search-btn"
+          className="search-btn py-3 px-6 bg-[#f97316] rounded-full text-white border-none hover:bg-[#ea580c] cursor-pointer"
           onClick={() => {
             console.log("bC");
             //Search funcationality Code
@@ -70,7 +74,7 @@ const Body = () => {
           Search
         </button>
         <button
-          className="filter-button"
+          className="filter-butto border border-solid py-3 px-6 border-[#e5e7eb] rounded-full shadow-[0_0_3px_rgba(249,115,22,0.2)] border-[#f97313] "
           onClick={() => {
             const filteredList = listOfRestro.filter(
               (res) => res?.info?.avgRating > 4
@@ -78,12 +82,11 @@ const Body = () => {
             setFilteredRestro(filteredList);
           }}
         >
-          Most Rated Restaurant
+          Top Rated (4.0+)
         </button>
       </div>
-      <div className="filter-container"></div>
       {/*To run a loop */}
-      <div className="restro-container">
+      <div className="restro-container flex flex-wrap gap-[25px] justify-center">
         {filteredRestro.map((restaurant) => (
           <Link
             key={restaurant?.info?.id}

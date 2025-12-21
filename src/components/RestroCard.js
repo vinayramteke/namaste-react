@@ -12,7 +12,14 @@ const RestroCard = (props) => {
   const { cloudinaryImageId, name, cuisines, avgRating, sla, costForTwo } =
     restroInfo?.info || {};
   return (
-    <div className="restro-card w-[250px] bg-white  rounded-xl p-3 shadow-md cursor-pointer">
+    <div
+      className="restro-card 
+    transition-all
+    duration-200
+    ease-out
+    hover:-translate-y-1
+    hover:shadow-lg  w-[250px] bg-white  rounded-xl p-3 shadow-md cursor-pointer"
+    >
       <div className="restro-img-container w-full h-40 overflow-hidden rounded-lg mb-3">
         <img
           className="restro-img w-full h-full object-cover"

@@ -1,4 +1,4 @@
-import RestroCard from "./RestroCard";
+import RestroCard, { withPrmotedLabel } from "./RestroCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
@@ -10,6 +10,8 @@ const Body = () => {
   const [listOfRestro, setListOfRestro] = useState([]);
   const [filteredRestro, setFilteredRestro] = useState([]);
   const [searchText, setSearchText] = useState("");
+  //higher order component
+  const RestroCardPromoted = withPrmotedLabel(RestroCard);
 
   console.log("Body Comp", listOfRestro);
 
@@ -92,7 +94,11 @@ const Body = () => {
             key={restaurant?.info?.id}
             to={"/restaurant/" + restaurant?.info?.id}
           >
-            <RestroCard restroInfo={restaurant} />
+            {restaurant.info.isOpen ? (
+              <RestroCardPromoted restroInfo={restaurant} />
+            ) : (
+              <RestroCard restroInfo={restaurant} />
+            )}
           </Link>
         ))}
       </div>

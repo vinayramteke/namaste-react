@@ -47,4 +47,21 @@ const RestroCard = (props) => {
   );
 };
 
+//Higher Oder Component
+//input - RestroCard
+//Outpur - RestroCard with Prmoted label
+
+export const withPrmotedLabel = (RestroCard) => {
+  return (props) => {
+    return (
+      <div className="prmoted-container relative">
+        <label className="absolute bg-green-500 text-white mx-4 my-2 p-1 rounded-lg z-10">
+          Open
+        </label>
+        <RestroCard {...props} />
+      </div>
+    );
+  };
+};
+
 export default RestroCard;

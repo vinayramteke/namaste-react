@@ -8,8 +8,8 @@ const Header = () => {
 
   return (
     <div
-      className="header-container py-4 px-8 flex justify-between items-center top-0 sticky bg-[#ffffff] shadow-[0_4px_6px_-1px_rgba(0, 0, 0, 0.1) z-[1000];
-]"
+      className="header-container py-4 px-8 flex justify-between items-center top-0 sticky z-50
+       bg-[#ffffff] shadow-[0_4px_6px_-1px_rgba(0, 0, 0, 0.1) "
     >
       <div className="logo-container w-15 cursor-pointer block ">
         <img

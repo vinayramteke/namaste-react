@@ -14,11 +14,12 @@ const RestroCard = (props) => {
   return (
     <div
       className="restro-card 
+    z-10
     transition-all
     duration-200
     ease-out
     hover:-translate-y-1
-    hover:shadow-lg  w-[250px] bg-white  rounded-xl p-3 shadow-md cursor-pointer"
+    hover:shadow-lg w-[250px] bg-white  rounded-xl p-3 shadow-md cursor-pointer "
     >
       <div className="restro-img-container w-full h-40 overflow-hidden rounded-lg mb-3">
         <img
@@ -51,12 +52,12 @@ const RestroCard = (props) => {
 //input - RestroCard
 //Outpur - RestroCard with Prmoted label
 
-export const withPrmotedLabel = (RestroCard) => {
+export const withVegLabel = (RestroCard) => {
   return (props) => {
     return (
       <div className="prmoted-container relative">
-        <label className="absolute bg-green-500 text-white mx-4 my-2 p-1 rounded-lg z-10">
-          Open
+        <label className="absolute w-6 h-6 ml-3 mt-3  bg-white z-10">
+          <img src="https://img.icons8.com/color/48/vegetarian-food-symbol.png"></img>
         </label>
         <RestroCard {...props} />
       </div>

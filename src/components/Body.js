@@ -1,4 +1,4 @@
-import RestroCard, { withPrmotedLabel } from "./RestroCard";
+import RestroCard, { withVegLabel } from "./RestroCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
@@ -11,9 +11,9 @@ const Body = () => {
   const [filteredRestro, setFilteredRestro] = useState([]);
   const [searchText, setSearchText] = useState("");
   //higher order component
-  const RestroCardPromoted = withPrmotedLabel(RestroCard);
+  const RestroCardVeg = withVegLabel(RestroCard);
 
-  console.log("Body Comp", listOfRestro);
+  // console.log("Body Comp", listOfRestro);
 
   // creating api call using react hook useEffect
   useEffect(() => {
@@ -88,14 +88,14 @@ const Body = () => {
         </button>
       </div>
       {/*To run a loop */}
-      <div className="restro-container flex flex-wrap gap-6 justify-center  ">
+      <div className="restro-container flex flex-wrap gap-6 justify-center z-10 ">
         {filteredRestro.map((restaurant) => (
           <Link
             key={restaurant?.info?.id}
             to={"/restaurant/" + restaurant?.info?.id}
           >
-            {restaurant.info.isOpen ? (
-              <RestroCardPromoted restroInfo={restaurant} />
+            {restaurant.info.veg ? (
+              <RestroCardVeg restroInfo={restaurant} />
             ) : (
               <RestroCard restroInfo={restaurant} />
             )}

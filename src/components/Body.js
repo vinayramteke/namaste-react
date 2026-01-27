@@ -18,6 +18,22 @@ const Body = () => {
 
   const RestroCardVeg = withVegLabel(RestroCard);
 
+  const handleSearch = () => {
+    const searchedResto = listOfRestro.filter((res) =>
+      res.info.name.toLowerCase().includes(searchText.toLowerCase()),
+    );
+    if (searchedResto.length === 0) {
+      alert("No restaurants found");
+      return;
+    }
+    setFilteredRestro(searchedResto);
+  };
+
+  const handleFilter = () => {
+    const filteredList = listOfRestro.filter((res) => res?.info?.avgRating > 4);
+    setFilteredRestro(filteredList);
+  };
+
   //Using Shimmer to load fake card for better UX also called Conditional Rendring.
   if (listOfRestro.length === 0) {
     return <Shimmer />;
@@ -40,30 +56,14 @@ const Body = () => {
         {/* search button */}
         <button
           className="search-btn py-3 px-6 bg-[#f97316] rounded-full text-white border-none shadow-[0_0_3px_rgba(249,115,22,0.2)] hover:bg-[#ea580c] cursor-pointer"
-          onClick={() => {
-            console.log("bC");
-            //Search funcationality Code
-            const searchedResto = listOfRestro.filter((res) =>
-              res.info.name.toLowerCase().includes(searchText.toLowerCase()),
-            );
-            if (searchedResto.length === 0) {
-              alert("No restaurants found");
-              return;
-            }
-            console.log(searchedResto);
-            setFilteredRestro(searchedResto);
-          }}
+          onClick={handleSearch}
         >
           Search
         </button>
+        {/* Top Restro Filter Button */}
         <button
           className="filter-button border border-solid py-3 px-6 border-[#e5e7eb] rounded-full shadow-[0_0_3px_rgba(249,115,22,0.2)] hover:border-[#f97313] "
-          onClick={() => {
-            const filteredList = listOfRestro.filter(
-              (res) => res?.info?.avgRating > 4,
-            );
-            setFilteredRestro(filteredList);
-          }}
+          onClick={handleFilter}
         >
           Top Rated (4.0+)
         </button>

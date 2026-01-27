@@ -2,40 +2,21 @@ import RestroCard, { withVegLabel } from "./RestroCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
-import useRestroCard from "../utils/useRestroCard";
+import useRestroList from "../utils/useRestroList";
 
 //step 2:building Body for my food app
 const Body = () => {
   //creating react state varible using react hook useState=>maintain state of varible and sink UI
-  const [listOfRestro, setListOfRestro] = useState([]);
+  // const [listOfRestro, setListOfRestro] = useState([]);
   const [filteredRestro, setFilteredRestro] = useState([]);
   const [searchText, setSearchText] = useState("");
-  //higher order component
-  const RestroCardVeg = withVegLabel(RestroCard);
 
-  // console.log("Body Comp", listOfRestro);
-
-  // creating api call using react hook useEffect
+  const listOfRestro = useRestroList();
   useEffect(() => {
-    fetchData();
-  }, []);
+    setFilteredRestro(listOfRestro);
+  }, [listOfRestro]);
 
-  // api call to fetch real data
-  const fetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=31.68660&lng=76.52180&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
-    const json = await data.json();
-    setListOfRestro(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    setFilteredRestro(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    console.log(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-  };
+  const RestroCardVeg = withVegLabel(RestroCard);
 
   //Using Shimmer to load fake card for better UX also called Conditional Rendring.
   if (listOfRestro.length === 0) {
@@ -63,7 +44,7 @@ const Body = () => {
             console.log("bC");
             //Search funcationality Code
             const searchedResto = listOfRestro.filter((res) =>
-              res.info.name.toLowerCase().includes(searchText.toLowerCase())
+              res.info.name.toLowerCase().includes(searchText.toLowerCase()),
             );
             if (searchedResto.length === 0) {
               alert("No restaurants found");
@@ -79,7 +60,7 @@ const Body = () => {
           className="filter-button border border-solid py-3 px-6 border-[#e5e7eb] rounded-full shadow-[0_0_3px_rgba(249,115,22,0.2)] hover:border-[#f97313] "
           onClick={() => {
             const filteredList = listOfRestro.filter(
-              (res) => res?.info?.avgRating > 4
+              (res) => res?.info?.avgRating > 4,
             );
             setFilteredRestro(filteredList);
           }}

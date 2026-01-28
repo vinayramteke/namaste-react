@@ -4,19 +4,17 @@ import Shimmer from "./Shimmer";
 import { Link } from "react-router";
 import useRestroList from "../utils/useRestroList";
 
-//step 2:building Body for my food app
+const RestroCardVeg = withVegLabel(RestroCard);
+
 const Body = () => {
-  //creating react state varible using react hook useState=>maintain state of varible and sink UI
-  // const [listOfRestro, setListOfRestro] = useState([]);
   const [filteredRestro, setFilteredRestro] = useState([]);
   const [searchText, setSearchText] = useState("");
 
   const listOfRestro = useRestroList();
+
   useEffect(() => {
     setFilteredRestro(listOfRestro);
   }, [listOfRestro]);
-
-  const RestroCardVeg = withVegLabel(RestroCard);
 
   const handleSearch = () => {
     const searchedResto = listOfRestro.filter((res) =>

@@ -2,7 +2,6 @@ import { LOGO_URL } from "../utils/constants";
 import { useState } from "react";
 import { Link } from "react-router";
 
-///step 1: Build Header of my Food App
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
 

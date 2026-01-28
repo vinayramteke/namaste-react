@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import { MENUIMG_URL } from "../utils/constants";
 import Shimmer from "./Shimmer";
 import useRestroMenu from "../utils/useRestroMenu";
+import RestroHeader from "./RestroHeader";
 
 const RestroMenu = () => {
   const { restroId } = useParams();
@@ -25,47 +26,22 @@ const RestroMenu = () => {
 
   const categories =
     restroInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
-      (c) => c.card?.card?.itemCards
+      (c) => c.card?.card?.itemCards,
     ) || [];
 
   return (
     <div className="r-container max-w-[800px] mx-auto min-h-screen font-sans text-gray-700 pb-20">
       {/* --- Restaurant Header Section --- */}
-      <div className="r-details pt-8 px-4 mb-8">
-        <div className="flex justify-between items-end mb-4">
-          <div>
-            <h1 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
-              {name}
-            </h1>
-            <p className="text-xs text-gray-500">{cuisines.join(", ")}</p>
-            <p className="text-xs text-gray-500">
-              {areaName}, {sla.lastMileTravelString}
-            </p>
-          </div>
 
-          {/* Rating Box */}
-          <div className="border border-gray-200 rounded-lg p-2 text-center shadow-[0_1px_5px_rgba(0,0,0,0.05)] min-w-[60px]">
-            <div className="flex items-center justify-center gap-1 text-green-700 font-bold border-b border-gray-200 pb-1 mb-1">
-              <span className="text-lg">★</span>
-              <span className="text-sm">{avgRatingString}</span>
-            </div>
-            <div className="text-[10px] font-semibold text-gray-500 tracking-tighter">
-              {totalRatings}
-            </div>
-          </div>
-        </div>
-
-        {/* Time and Cost Info */}
-        <div className="bg-gray-100 rounded-b-2xl p-3 flex gap-4 items-center uppercase text-sm font-bold text-gray-700">
-          <div className="flex items-center gap-2">
-            <span>{sla.slaString}</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span>{costForTwoMessage}</span>
-          </div>
-        </div>
-      </div>
-
+      <RestroHeader
+        name={name}
+        cuisines={cuisines}
+        totalRatings={totalRatings}
+        avgRatingString={avgRatingString}
+        costForTwoMessage={costForTwoMessage}
+        sla={sla}
+        areaName={areaName}
+      />
       <div className="text-center my-6">
         <span className="text-xs text-gray-400 tracking-widest uppercase">
           M E N U

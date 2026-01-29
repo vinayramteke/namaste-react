@@ -9,7 +9,7 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestroMenu from "./components/RestroMenu";
-import LoginP from "./components/LoginP";
+import Login from "./components/Login";
 //step 0: Build Body of my Food App
 const AppLayout = () => {
   return (
@@ -38,7 +38,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/login",
-        element: <LoginP />,
+        element: <Login />,
       },
 
       {

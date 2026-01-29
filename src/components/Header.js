@@ -1,6 +1,6 @@
 import { LOGO_URL } from "../utils/constants";
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
@@ -39,7 +39,7 @@ const Header = () => {
               btnName === "Login" ? setBtnName("Logout") : setBtnName("Login");
             }}
           >
-            {btnName}
+            <Link to="/login">Login</Link>
           </li>
         </ul>
       </div>

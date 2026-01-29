@@ -3,13 +3,13 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router"; //for rounting
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom"; //for rounting
 //pages Import
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestroMenu from "./components/RestroMenu";
-
+import LoginP from "./components/LoginP";
 //step 0: Build Body of my Food App
 const AppLayout = () => {
   return (
@@ -36,6 +36,11 @@ const appRouter = createBrowserRouter([
         path: "/contact",
         element: <Contact />,
       },
+      {
+        path: "/login",
+        element: <LoginP />,
+      },
+
       {
         path: "/restaurant/:restroId",
         element: <RestroMenu />,

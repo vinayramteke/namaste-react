@@ -1,8 +1,9 @@
 import RestroCard, { withVegLabel } from "./RestroCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import useRestroList from "../utils/useRestroList";
+import SearchBar from "./SearchBar";
 
 const RestroCardVeg = withVegLabel(RestroCard);
 
@@ -16,7 +17,10 @@ const Body = () => {
     setFilteredRestro(listOfRestro);
   }, [listOfRestro]);
 
-  const handleSearch = () => {
+  const handleSearchText = (e) => {
+    setSearchText(e.target.value);
+  };
+  const handleSearchBtn = () => {
     const searchedResto = listOfRestro.filter((res) =>
       res.info.name.toLowerCase().includes(searchText.toLowerCase()),
     );
@@ -39,33 +43,13 @@ const Body = () => {
   return (
     <div className="page-container my-0 mx-auto mb-8 p-8-4 max-w-300">
       {/* search and filter box */}
-      <div className="search-filter-container flex flex-wrap gap-4 justify-center items-center mb-10 mt-10 ">
-        {/* search input box */}
-        <input
-          type="text"
-          className="search-input rounded-full py-3 px-4 w-full max-w-100 border border-solid outline-none border-[#e5e7eb] focus:shadow-[0_0_3px_rgba(249,115,22,0.2)] focus:border-[#f97313] transition-shadow-12"
-          placeholder="Search for restaurants..."
-          value={searchText}
-          onChange={(e) => {
-            setSearchText(e.target.value);
-          }}
-        />
+      <SearchBar
+        searchText={searchText}
+        handleFilter={handleFilter}
+        handleSearchBtn={handleSearchBtn}
+        handleSearchText={handleSearchText}
+      />
 
-        {/* search button */}
-        <button
-          className="search-btn py-3 px-6 bg-[#f97316] rounded-full text-white border-none shadow-[0_0_3px_rgba(249,115,22,0.2)] hover:bg-[#ea580c] cursor-pointer"
-          onClick={handleSearch}
-        >
-          Search
-        </button>
-        {/* Top Restro Filter Button */}
-        <button
-          className="filter-button border border-solid py-3 px-6 border-[#e5e7eb] rounded-full shadow-[0_0_3px_rgba(249,115,22,0.2)] hover:border-[#f97313] "
-          onClick={handleFilter}
-        >
-          Top Rated (4.0+)
-        </button>
-      </div>
       {/*To run a loop */}
       <div className="restro-container flex flex-wrap gap-6 justify-center z-10 ">
         {filteredRestro.map((restaurant) => (
